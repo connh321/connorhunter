@@ -1,9 +1,5 @@
-import '../../sass/globals.scss'
+import "../../sass/globals.scss";
 
 export default function Home() {
-    return (
-        <>
-
-        </>
-    );
+  return <></>;
 }
