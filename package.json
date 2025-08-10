@@ -1,0 +1,35 @@
+{
+  "name": "connorhunter",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,html,css,scss,json}\"",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "@mui/material": "^7.3.1",
+    "next": "15.4.6",
+    "react": "19.1.0",
+    "react-animated-3d-card": "^1.0.2",
+    "react-dom": "19.1.0",
+    "rough-notation": "^0.5.1",
+    "sass": "^1.90.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "client-only": "^0.0.1",
+    "eslint": "^9",
+    "eslint-config-next": "15.4.6",
+    "husky": "^9.1.7",
+    "prettier": "^3.6.2",
+    "server-only": "^0.0.1",
+    "typescript": "^5"
+  }
+}
