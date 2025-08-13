@@ -1,16 +1,11 @@
-:root {
-  font-family: Fir, Helvetica, sans-serif;
-}
-
 body {
   margin: 0;
-  padding: 2rem 5rem;
   -webkit-font-smoothing: antialiased;
   font-feature-settings: "pnum";
-  background-color: #F8FAFC;
   font-variant-numeric: proportional-nums;
   text-rendering: optimizeLegibility;
   box-sizing: border-box;
+  min-width: 375px;
 }
 
 html {
@@ -21,8 +16,37 @@ html {
   box-sizing: border-box;
 }
 
-@media (max-width: 700px) {
+/* xs: 0–600px */
+@media (max-width: 600px) {
   body {
     padding: 1rem 1rem;
+  }
+}
+
+/* sm: 601–900px */
+@media (min-width: 601px) and (max-width: 900px) {
+  body {
+    padding: 1.5rem 3rem;
+  }
+}
+
+/* md: 901–1200px */
+@media (min-width: 901px) and (max-width: 1200px) {
+  body {
+    padding: 1.75rem 4rem;
+  }
+}
+
+/* lg: 1201–1536px */
+@media (min-width: 1201px) and (max-width: 1536px) {
+  body {
+    padding: 2rem 5rem;
+  }
+}
+
+/* xl: 1537px+ */
+@media (min-width: 1537px) {
+  body {
+    padding: 2rem 5rem;
   }
 }

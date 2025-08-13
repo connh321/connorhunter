@@ -1,0 +1,34 @@
+@use "../../../../sass/theme" as theme;
+
+.header {
+  height: 66px;
+  font-weight: 700;
+  color: theme.$palette-text-secondary;
+}
+
+.btn {
+  display: inline-flex !important;
+  color: inherit !important;
+  font-size: 1rem !important;
+  font-weight: inherit !important;
+  letter-spacing: 0.1rem;
+}
+
+.btns {
+  display: flex;
+  gap: 1rem;
+}
+
+.short {
+  display: none !important;
+}
+
+@media (max-width: 600px) {
+  .long {
+    display: none !important;
+  }
+
+  .short {
+    display: inline-flex !important;
+  }
+}
