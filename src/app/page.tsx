@@ -1,5 +1,13 @@
 import "../../sass/globals.scss";
+import Header from "@/components/client/header/header";
+import React from "react";
 
-export default function Home() {
-  return <></>;
-}
+const App = (): React.JSX.Element => {
+  return (
+    <>
+      <Header />
+    </>
+  );
+};
+
+export default App;

@@ -1,1 +1,14 @@
-$color-background-default: #f6f9fc;
+// Typography
+$typography-fontFamily: "'Lato', Helvetica";
+$typography-allVariants-color: rgba(255, 255, 255, 0.87);
+$typography-button-fontFamily: "'Lato', Helvetica";
+$typography-button-textTransform: none;
+
+// Palette
+$palette-primary-main: rgba(255, 255, 255, 0.87);
+$palette-secondary-main: rgba(255, 255, 255, 0.87);
+
+$palette-background-default: #ffffff;
+
+$palette-text-primary: rgba(0, 0, 0, 0.87);
+$palette-text-secondary: rgba(0, 0, 0, 0.6);
