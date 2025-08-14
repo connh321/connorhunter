@@ -1,7 +1,7 @@
-@use "../../../../sass/theme" as theme;
+@use "../../../../scss/theme" as theme;
 
 .header {
-  height: 66px;
+  height: 4.125rem;
   font-weight: 700;
   color: theme.$palette-text-secondary;
 }
@@ -23,7 +23,11 @@
   display: none !important;
 }
 
-@media (max-width: 600px) {
+.ptr {
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
   .long {
     display: none !important;
   }
