@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import React from "react";
+import { ReactElement } from "react";
 import { Lato } from "next/font/google";
 import ThemeRegistry from "@/theme/theme";
 
@@ -35,9 +35,9 @@ interface Props {
  *
  * @param {Props} props - Component props.
  * @param {React.ReactNode} props.children - The children elements to render inside the layout.
- * @returns {React.JSX.Element} The root HTML structure for the application.
+ * @returns {ReactElement} The root HTML structure for the application.
  */
-const RootLayout = ({ children }: Props): React.JSX.Element => {
+const RootLayout = ({ children }: Props): ReactElement => {
   return (
     <html lang="en">
       <body className={lato.className}>

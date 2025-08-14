@@ -5,6 +5,7 @@ body {
   font-variant-numeric: proportional-nums;
   text-rendering: optimizeLegibility;
   box-sizing: border-box;
+  width: 100vw;
   min-width: 375px;
 }
 
@@ -19,7 +20,7 @@ html {
 /* xs: 0–600px */
 @media (max-width: 600px) {
   body {
-    padding: 1rem 1rem;
+    padding: 1.875rem 1.875rem;
   }
 }
 

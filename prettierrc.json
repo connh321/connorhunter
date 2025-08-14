@@ -23,7 +23,7 @@
       }
     },
     {
-      "files": "*.scss",
+      "files": "*.sass",
       "options": {
         "parser": "scss"
       }

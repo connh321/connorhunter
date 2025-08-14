@@ -15,6 +15,8 @@ const theme = createTheme({
     button: {
       fontFamily: "'Lato', Helvetica",
       textTransform: "none",
+      hover: "transparent !important",
+      active: "transparent !important",
     },
   },
   palette: {
