@@ -2,7 +2,7 @@
 import { ReactElement } from "react";
 import { Box, Stack, Typography } from "@mui/material";
 import styles from "./header.module.scss";
-import ContactsButton from "@/components/client/contacts-button/contacts-button";
+import dynamic from "next/dynamic";
 
 /**
  * Header component renders the top navigation bar.
@@ -14,6 +14,18 @@ import ContactsButton from "@/components/client/contacts-button/contacts-button"
  * @returns {ReactElement} The header bar with logo and navigation buttons.
  */
 const Header = (): ReactElement => {
+  const ResumeButton = dynamic(
+    () => import("@/components/client/resume-button/resume-button"),
+    {
+      ssr: true,
+    },
+  );
+  const ContactsButton = dynamic(
+    () => import("@/components/client/contacts-button/contacts-button"),
+    {
+      ssr: true,
+    },
+  );
   return (
     <Stack
       component="header"
@@ -36,7 +48,10 @@ const Header = (): ReactElement => {
           CH
         </Typography>
       </Box>
-      <ContactsButton></ContactsButton>
+      <Stack direction="row" gap={2}>
+        <ResumeButton></ResumeButton>
+        <ContactsButton></ContactsButton>
+      </Stack>
     </Stack>
   );
 };

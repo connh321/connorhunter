@@ -3,7 +3,7 @@ import { ReactElement } from "react";
 import HighlightElement from "@/components/client/highlight-element/highlight-element";
 import { Box } from "@mui/material";
 
-const ContactButton = (): ReactElement => {
+const ContactsButton = (): ReactElement => {
   const handleScrollToBottom = () => {
     document
       .getElementById("contact-section")
@@ -19,4 +19,4 @@ const ContactButton = (): ReactElement => {
   );
 };
 
-export default ContactButton;
+export default ContactsButton;
