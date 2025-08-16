@@ -2,7 +2,7 @@
 import { ReactElement } from "react";
 import { Box, Stack, Typography } from "@mui/material";
 import styles from "./header.module.scss";
-import HighlightElement from "@/components/client/highlight-element/highlight-element";
+import ContactsButton from "@/components/client/contacts-button/contacts-button";
 
 /**
  * Header component renders the top navigation bar.
@@ -36,16 +36,7 @@ const Header = (): ReactElement => {
           CH
         </Typography>
       </Box>
-      <Box className={styles.btns}>
-        <HighlightElement
-          type="underline"
-          hover={true}
-          color="#e6d4fa"
-          className={`${styles.btn} ${styles.ptr}`}
-        >
-          Contact
-        </HighlightElement>
-      </Box>
+      <ContactsButton></ContactsButton>
     </Stack>
   );
 };

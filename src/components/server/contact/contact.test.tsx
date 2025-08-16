@@ -1,21 +1,45 @@
 // src/components/client/contact/contact.test.tsx
-import React from "react";
 import { render, screen } from "@testing-library/react";
 import Contact from "./contact";
+import { IContact } from "@/types/contact";
+
+const mockData: IContact[] = [
+  { type: "phone", label: "(315) 694-6563", href: "tel:3156946563" },
+  { type: "email", label: "connh321@gmail", href: "mailto:connh321@gmail.com" },
+  {
+    type: "github",
+    label: "git/connh321",
+    href: "https://github.com/connh321",
+  },
+  {
+    type: "linkedin",
+    label: "in/connor--hunter",
+    href: "https://linkedin.com/in/connor--hunter",
+  },
+];
 
 describe("Contact Component", () => {
-  it("renders all contact labels", () => {
-    render(<Contact />);
+  it("renders all contact labels", async () => {
+    render(
+      await Contact({
+        fetchFunction: async () => mockData,
+        errorMessage: "Error loading contacts",
+      }),
+    );
 
-    // Check that each label is rendered
-    expect(screen.getByText(/Phone:/i)).toBeInTheDocument();
-    expect(screen.getByText(/Email:/i)).toBeInTheDocument();
-    expect(screen.getByText(/GitHub:/i)).toBeInTheDocument();
-    expect(screen.getByText(/LinkedIn:/i)).toBeInTheDocument();
+    expect(screen.getByText("(315) 694-6563")).toBeInTheDocument();
+    expect(screen.getByText("connh321@gmail")).toBeInTheDocument();
+    expect(screen.getByText("git/connh321")).toBeInTheDocument();
+    expect(screen.getByText("in/connor--hunter")).toBeInTheDocument();
   });
 
-  it("renders all contact links with correct hrefs", () => {
-    render(<Contact />);
+  it("renders all contact links with correct hrefs", async () => {
+    render(
+      await Contact({
+        fetchFunction: async () => mockData,
+        errorMessage: "Error loading contacts",
+      }),
+    );
 
     expect(screen.getByText("(315) 694-6563").closest("a")).toHaveAttribute(
       "href",
