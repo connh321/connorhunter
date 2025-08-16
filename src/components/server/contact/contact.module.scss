@@ -4,8 +4,8 @@
 }
 
 .card {
+  background: rgba(241, 245, 249, 0.5) !important;
   height: 75px !important;
-  background: #ffffff !important;
   border: 1px solid rgba(0, 0, 0, 0.1) !important;
   border-radius: 16px !important;
   box-shadow:
@@ -36,17 +36,17 @@
   width: 40px;
   height: 40px;
   border-radius: 10px;
-  background: rgba(0, 0, 0, 0.05); // very subtle
+  background: rgba(241, 245, 249, 0.5) !important;
   transition: all 0.3s ease;
 
   svg {
-    color: inherit; // will now inherit the color you pass via style/sx
+    color: inherit;
     font-size: 18px !important;
   }
 
   .card:hover & {
     transform: scale(1.05);
-    background: rgba(0, 0, 0, 0.08);
+    background: rgba(0, 0, 0, 0.05) !important;
   }
 }
 

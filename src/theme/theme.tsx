@@ -9,9 +9,7 @@ import React from "react";
 const theme = createTheme({
   typography: {
     fontFamily: "'Lato', Helvetica",
-    allVariants: {
-      color: "rgba(255, 255, 255, 0.87)",
-    },
+
     button: {
       fontFamily: "'Lato', Helvetica",
       textTransform: "none",
@@ -21,10 +19,10 @@ const theme = createTheme({
   },
   palette: {
     primary: {
-      main: "rgba(255, 255, 255, 0.87)",
+      main: "rgba(0, 0, 0, 0.6)",
     },
     secondary: {
-      main: "rgba(255, 255, 255, 0.87)",
+      main: "rgba(0, 0, 0, 0)",
     },
     background: {
       default: "#ffffff",

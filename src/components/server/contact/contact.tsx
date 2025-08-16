@@ -34,7 +34,7 @@ const Contact = (): ReactElement => {
     {
       label: "LinkedIn",
       value: "in/connor--hunter",
-      href: "https://linkedin.com/in/connor--hunter/",
+      href: "https://linkedin.com/in/connor--hunter",
       color: "#fbe894",
       icon: <LinkedInIcon fontSize="small" />,
     },
@@ -71,7 +71,7 @@ const Contact = (): ReactElement => {
                   type="box"
                   hover={true}
                   color={contact.color}
-                  className={`${styles.btn} ${styles.title} ${styles.short}`}
+                  className={`${styles.title} ${styles.short}`}
                 >
                   <Link
                     href={contact.href}

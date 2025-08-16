@@ -7,12 +7,10 @@ const mockShow = jest.fn();
 const mockHide = jest.fn();
 const mockAnnotate = jest
   .fn()
-  .mockReturnValue({ show: mockShow, hide: mockHide });
-const mockAnnotationGroup = jest.fn().mockReturnValue({ show: jest.fn() });
+  .mockReturnValue({ show: mockShow, hide: mockHide, remove: jest.fn() });
 
 jest.mock("rough-notation", () => ({
   annotate: (...args: never[]) => mockAnnotate(...args),
-  annotationGroup: (...args: never[]) => mockAnnotationGroup(...args),
 }));
 
 describe("useDynamicHighlight", () => {
@@ -20,7 +18,7 @@ describe("useDynamicHighlight", () => {
     jest.clearAllMocks();
   });
 
-  it("should call annotate for each non-hover ref", () => {
+  it("should call annotate and show for each non-hover ref", () => {
     const ref1 = {
       current: document.createElement("span"),
     } as React.RefObject<HTMLSpanElement>;
@@ -36,10 +34,25 @@ describe("useDynamicHighlight", () => {
     );
 
     expect(mockAnnotate).toHaveBeenCalledTimes(2);
-    expect(mockAnnotationGroup).toHaveBeenCalledTimes(1); // Group show called
+    expect(mockShow).toHaveBeenCalledTimes(2);
   });
 
-  it("should add hover listeners when hover=true", () => {
+  it("should not call show on initial render when hover=true", () => {
+    const ref = {
+      current: document.createElement("span"),
+    } as React.RefObject<HTMLSpanElement>;
+
+    renderHook(() =>
+      useDynamicHighlight([
+        { ref, type: "highlight", color: "#f3ced1", hover: true },
+      ]),
+    );
+
+    expect(mockAnnotate).toHaveBeenCalledTimes(1);
+    expect(mockShow).not.toHaveBeenCalled();
+  });
+
+  it("should add and trigger hover listeners when hover=true", () => {
     const span = document.createElement("span");
     const ref = { current: span } as React.RefObject<HTMLSpanElement>;
 
@@ -53,13 +66,13 @@ describe("useDynamicHighlight", () => {
     const mouseLeave = new Event("mouseleave");
 
     span.dispatchEvent(mouseEnter);
-    span.dispatchEvent(mouseLeave);
+    expect(mockShow).toHaveBeenCalledTimes(1);
 
-    expect(mockShow).toHaveBeenCalled();
-    expect(mockHide).toHaveBeenCalled();
+    span.dispatchEvent(mouseLeave);
+    expect(mockHide).toHaveBeenCalledTimes(1);
   });
 
-  it("should clean up hover listeners on unmount", () => {
+  it("should clean up hover listeners and annotations on unmount", () => {
     const span = document.createElement("span");
     const ref = { current: span } as React.RefObject<HTMLSpanElement>;
 
@@ -70,10 +83,12 @@ describe("useDynamicHighlight", () => {
     );
 
     const removeSpy = jest.spyOn(span, "removeEventListener");
+    const removeAnnotationSpy = mockAnnotate.mock.results[0].value.remove;
 
     unmount();
 
     expect(removeSpy).toHaveBeenCalledWith("mouseenter", expect.any(Function));
     expect(removeSpy).toHaveBeenCalledWith("mouseleave", expect.any(Function));
+    expect(removeAnnotationSpy).toHaveBeenCalled();
   });
 });
