@@ -27,7 +27,7 @@ const ChipsSection = async ({ title, fetchFunction, errorMessage }: Props) => {
   } catch (err) {
     console.error(errorMessage, err);
     error = errorMessage;
-  } 
+  }
 
   /**
    * Show error if any.
