@@ -7,7 +7,10 @@
  *
  * @module Footer
  */
-import { Box, Typography } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
+import dynamic from "next/dynamic";
+import { getContacts } from "@/lib/contacts";
+import { FETCH_CONTACTS_ERROR } from "@/errors/contacts";
 
 /**
  * Footer component.
@@ -16,29 +19,43 @@ import { Box, Typography } from "@mui/material";
  *
  */
 const Footer = () => {
+  const Contact = dynamic(() => import("@/components/server/contact/contact"), {
+    ssr: true,
+  });
+
   const startYear = 2025;
   const currentYear = new Date().getFullYear();
 
   return (
-    <Box
+    <Stack
+      id="contact-section"
       component="footer"
       className="footer"
+      direction="column"
+      alignItems="center"
+      justifyContent="center"
       sx={{
         width: "100%",
         textAlign: "center",
-        padding: "3rem 0 1rem 0",
+        padding: "3rem 0 0 0",
         mt: "auto",
       }}
     >
-      <Typography variant="body2" color="textSecondary">
+      <Typography variant="body2" color="textSecondary" sx={{ mb: 2 }}>
         ©{" "}
         {startYear === currentYear
           ? currentYear
           : `${startYear} - ${currentYear}`}{" "}
         Connor Hunter
       </Typography>
-    </Box>
+      {/*<Suspense fallback={<CertificationsFallback />}>*/}
+      <Contact
+        fetchFunction={getContacts}
+        errorMessage={FETCH_CONTACTS_ERROR}
+      ></Contact>
+
+      {/*</Suspense>*/}
+    </Stack>
   );
 };
-
 export default Footer;
