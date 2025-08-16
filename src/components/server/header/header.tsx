@@ -23,26 +23,24 @@ const Header = (): ReactElement => {
       className={styles.header}
     >
       <Box className={styles.nameContainer}>
-        <Typography className={`${styles.btn} ${styles.title} ${styles.long}`}>
+        <Typography
+          variant="h2"
+          className={`${styles.btn} ${styles.title} ${styles.long}`}
+        >
           CONNOR HUNTER
         </Typography>
-        <Typography className={`${styles.btn} ${styles.title} ${styles.short}`}>
+        <Typography
+          variant="h2"
+          className={`${styles.btn} ${styles.title} ${styles.short}`}
+        >
           CH
         </Typography>
       </Box>
       <Box className={styles.btns}>
         <HighlightElement
-          type="box"
+          type="underline"
           hover={true}
           color="#e6d4fa"
-          className={`${styles.btn} ${styles.ptr}`}
-        >
-          Projects
-        </HighlightElement>
-        <HighlightElement
-          type="box"
-          hover={true}
-          color="#fbe894"
           className={`${styles.btn} ${styles.ptr}`}
         >
           Contact

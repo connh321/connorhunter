@@ -31,7 +31,7 @@ describe("Contact Component", () => {
     );
     expect(screen.getByText("in/connor--hunter").closest("a")).toHaveAttribute(
       "href",
-      "https://linkedin.com/in/connor--hunter/",
+      "https://linkedin.com/in/connor--hunter",
     );
   });
 });

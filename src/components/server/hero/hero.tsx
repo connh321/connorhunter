@@ -7,12 +7,9 @@ import { Grid } from "@mui/material";
 import dynamic from "next/dynamic";
 
 const Hero = (): ReactElement => {
-  const About = dynamic(
-    () => import("@/components/client/about-client/about-client"),
-    {
-      ssr: true,
-    },
-  );
+  const About = dynamic(() => import("@/components/server/about/about"), {
+    ssr: true,
+  });
   const Contact = dynamic(() => import("@/components/server/contact/contact"), {
     ssr: true,
   });
