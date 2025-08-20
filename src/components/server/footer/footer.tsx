@@ -11,6 +11,7 @@ import { Stack, Typography } from "@mui/material";
 import dynamic from "next/dynamic";
 import { getContacts } from "@/lib/contacts";
 import { FETCH_CONTACTS_ERROR } from "@/errors/contacts";
+import styles from "./footer.module.scss";
 
 /**
  * Footer component.
@@ -30,18 +31,19 @@ const Footer = () => {
     <Stack
       id="contact-section"
       component="footer"
-      className="footer"
+      className={styles.footer}
       direction="column"
       alignItems="center"
+      flexWrap="wrap"
       justifyContent="center"
       sx={{
         width: "100%",
         textAlign: "center",
-        padding: "3rem 0 0 0",
+        padding: "2rem 0 0 0",
         mt: "auto",
       }}
     >
-      <Typography variant="body2" color="textSecondary" sx={{ mb: 2 }}>
+      <Typography variant="body2" color="primary" sx={{ mb: 0.375 }}>
         ©{" "}
         {startYear === currentYear
           ? currentYear

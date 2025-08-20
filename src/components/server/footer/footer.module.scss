@@ -1,0 +1,5 @@
+@use "../../../../scss/theme" as theme;
+
+.footer {
+  background-color: theme.$palette-secondary-main;
+}

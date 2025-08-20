@@ -1,0 +1,38 @@
+.project {
+  width: 100%;
+  padding: 3rem 2rem;
+  flex-direction: row !important;
+  border-radius: 35px !important;
+  box-shadow: 0 8px 13px rgba(0, 0, 0, 0.2) !important;
+}
+
+@media (max-width: 1300px) {
+  .img {
+    width: 400px !important;
+    height: 260px !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .content {
+    flex-direction: column !important;
+  }
+
+  .img {
+    width: 325px !important;
+    height: 211px !important;
+    margin: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .content {
+    flex-direction: column !important;
+  }
+
+  .img {
+    width: 250px !important;
+    height: 163px !important;
+    margin: auto;
+  }
+}

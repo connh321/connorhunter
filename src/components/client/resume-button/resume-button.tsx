@@ -1,7 +1,7 @@
 "use client";
 import { ReactElement } from "react";
-import HighlightElement from "@/components/client/highlight-element/highlight-element";
-import { Box, Link } from "@mui/material";
+import { Box, Button, Link } from "@mui/material";
+import "@/../scss/globals.scss";
 
 const ResumeButton = (): ReactElement => {
   const url = process.env.NEXT_PUBLIC_S3_RESUME_URL!;
@@ -15,9 +15,7 @@ const ResumeButton = (): ReactElement => {
   return (
     <Box onClick={handleScrollToBottom} sx={{ cursor: "pointer" }}>
       <Link href={url} target="_blank" rel="noopener noreferrer">
-        <HighlightElement type="underline" hover={true} color="#f3ced1">
-          Resume
-        </HighlightElement>
+        <Button className="btnAnimation">Resume</Button>
       </Link>
     </Box>
   );

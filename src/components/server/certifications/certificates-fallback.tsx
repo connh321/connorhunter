@@ -18,9 +18,12 @@ const ChipsSectionFallback = (): ReactElement => {
           sx={{ mb: "8px" }}
         />
         <Stack direction="row" gap={2}>
-          <Skeleton variant="rectangular" width="150px" height={"150px"} />
-          <Skeleton variant="rectangular" width="150px" height={"150px"} />
-          <Skeleton variant="rectangular" width="150px" height={"150px"} />
+          <Skeleton
+            variant="rectangular"
+            width="150px"
+            height={"150px"}
+            sx={{ borderRadius: "32px" }}
+          />
         </Stack>
       </Box>
     </Box>

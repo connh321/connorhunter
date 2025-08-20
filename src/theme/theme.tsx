@@ -19,17 +19,17 @@ const theme = createTheme({
   },
   palette: {
     primary: {
-      main: "rgba(0, 0, 0, 0.6)",
+      main: "#ffffff",
     },
     secondary: {
-      main: "rgba(0, 0, 0, 0)",
+      main: "#191f2b",
     },
     background: {
-      default: "#ffffff",
+      default: "#E7E7E7",
     },
     text: {
-      primary: "rgba(0, 0, 0, 0.87)",
-      secondary: "rgba(0, 0, 0, 0.6)",
+      primary: "#191F2B",
+      secondary: "#ffffff",
     },
   },
 });
