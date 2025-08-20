@@ -8,8 +8,7 @@ import { ICertification } from "@/types/certification";
 
 // Silence console.error for cleaner test output
 beforeAll(() => {
-  jest.spyOn(console, "error").mockImplementation(() => {
-  });
+  jest.spyOn(console, "error").mockImplementation(() => {});
 });
 
 afterAll(() => {
@@ -20,7 +19,7 @@ afterAll(() => {
 jest.mock("next/image", () => ({
   __esModule: true,
   // eslint-disable-next-line @next/next/no-img-element
-  default: (props) => <img {...props} alt={props.alt} />
+  default: (props) => <img {...props} alt={props.alt} />,
 }));
 
 describe("Certifications Component", () => {
@@ -28,13 +27,13 @@ describe("Certifications Component", () => {
     {
       link: "http://example.com/badge1",
       src: "/certifications/cert1.webp",
-      alt: "Certification 1"
+      alt: "Certification 1",
     },
     {
       link: "http://example.com/badge2",
       src: "/certifications/cert2.webp",
-      alt: "Certification 2"
-    }
+      alt: "Certification 2",
+    },
   ];
 
   const mockErrorMessage = "Failed to fetch certifications.";
@@ -45,8 +44,8 @@ describe("Certifications Component", () => {
     render(
       await Certifications({
         fetchFunction: mockFetchFunction,
-        errorMessage: mockErrorMessage
-      })
+        errorMessage: mockErrorMessage,
+      }),
     );
 
     expect(screen.getByText("Certifications:")).toBeInTheDocument();
@@ -67,8 +66,8 @@ describe("Certifications Component", () => {
     render(
       await Certifications({
         fetchFunction: mockFetchFunction,
-        errorMessage: mockErrorMessage
-      })
+        errorMessage: mockErrorMessage,
+      }),
     );
 
     expect(screen.getByRole("alert")).toBeInTheDocument();
