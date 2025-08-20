@@ -1,61 +1,37 @@
-// src/components/client/contact/contact.test.tsx
+/**
+ * @jest-environment jsdom
+ */
 import { render, screen } from "@testing-library/react";
 import Contact from "./contact";
-import { IContact } from "@/types/contact";
+import { getContacts } from "@/lib/contacts";
+import { FETCH_CONTACTS_ERROR } from "@/errors/contacts";
 
-const mockData: IContact[] = [
-  { type: "phone", label: "(315) 694-6563", href: "tel:3156946563" },
-  { type: "email", label: "connh321@gmail", href: "mailto:connh321@gmail.com" },
-  {
-    type: "github",
-    label: "git/connh321",
-    href: "https://github.com/connh321",
-  },
-  {
-    type: "linkedin",
-    label: "in/connor--hunter",
-    href: "https://linkedin.com/in/connor--hunter",
-  },
-];
+jest.mock("../../../lib/contacts");
 
-describe("Contact Component", () => {
-  it("renders all contact labels", async () => {
-    render(
-      await Contact({
-        fetchFunction: async () => mockData,
-        errorMessage: "Error loading contacts",
-      }),
-    );
+const mockGetContacts = getContacts as jest.Mock;
 
-    expect(screen.getByText("(315) 694-6563")).toBeInTheDocument();
-    expect(screen.getByText("connh321@gmail")).toBeInTheDocument();
-    expect(screen.getByText("git/connh321")).toBeInTheDocument();
-    expect(screen.getByText("in/connor--hunter")).toBeInTheDocument();
+describe("Contact", () => {
+  it("renders contacts when fetch succeeds", async () => {
+    mockGetContacts.mockResolvedValueOnce([
+      { type: "email", label: "me@example.com", href: "mailto:me@example.com" },
+      {
+        type: "github",
+        label: "mygithub",
+        href: "https://github.com/mygithub",
+      },
+    ]);
+
+    render(await Contact());
+
+    expect(await screen.findByText("me@example.com")).toBeInTheDocument();
+    expect(await screen.findByText("mygithub")).toBeInTheDocument();
   });
 
-  it("renders all contact links with correct hrefs", async () => {
-    render(
-      await Contact({
-        fetchFunction: async () => mockData,
-        errorMessage: "Error loading contacts",
-      }),
-    );
+  it("renders error when fetch fails", async () => {
+    mockGetContacts.mockRejectedValueOnce(new Error("network fail"));
 
-    expect(screen.getByText("(315) 694-6563").closest("a")).toHaveAttribute(
-      "href",
-      "tel:3156946563",
-    );
-    expect(screen.getByText("connh321@gmail").closest("a")).toHaveAttribute(
-      "href",
-      "mailto:connh321@gmail.com",
-    );
-    expect(screen.getByText("git/connh321").closest("a")).toHaveAttribute(
-      "href",
-      "https://github.com/connh321",
-    );
-    expect(screen.getByText("in/connor--hunter").closest("a")).toHaveAttribute(
-      "href",
-      "https://linkedin.com/in/connor--hunter",
-    );
+    render(await Contact());
+
+    expect(await screen.findByText(FETCH_CONTACTS_ERROR)).toBeInTheDocument();
   });
 });

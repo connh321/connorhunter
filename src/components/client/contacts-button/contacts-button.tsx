@@ -1,7 +1,7 @@
 "use client";
 import { ReactElement } from "react";
-import HighlightElement from "@/components/client/highlight-element/highlight-element";
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
+import "@/../scss/globals.scss";
 
 const ContactsButton = (): ReactElement => {
   const handleScrollToBottom = () => {
@@ -12,9 +12,7 @@ const ContactsButton = (): ReactElement => {
 
   return (
     <Box onClick={handleScrollToBottom} sx={{ cursor: "pointer" }}>
-      <HighlightElement type="underline" hover={true} color="#e6d4fa">
-        Contact
-      </HighlightElement>
+      <Button className="btnAnimation">Contact</Button>
     </Box>
   );
 };

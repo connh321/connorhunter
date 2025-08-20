@@ -5,6 +5,7 @@ import Image from "next/image";
 import styles from "./certifications.module.scss";
 import Link from "next/link";
 import { ICertification } from "@/types/certification";
+import "@/../scss/globals.scss";
 
 /**
  * Props for the Certifications component.
@@ -44,7 +45,7 @@ const Certifications = async ({
 
   return (
     <Box sx={{ mb: 3 }} component="section">
-      <Typography variant="subtitle1" sx={{ mb: 1 }}>
+      <Typography variant="h5" sx={{ mb: 1 }} fontWeight={600}>
         Certifications:
       </Typography>
       <Stack direction="row" flexWrap="wrap" gap={"1rem"}>
@@ -58,7 +59,7 @@ const Certifications = async ({
               rel="noopener noreferrer"
             >
               <Image
-                className={styles.tile}
+                className="tile"
                 src={certification.src}
                 alt={certification.alt}
                 width={150}

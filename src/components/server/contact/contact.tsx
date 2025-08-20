@@ -1,37 +1,25 @@
 "use server";
 import { ReactElement } from "react";
-import { Alert, Box, Card, Link, Stack } from "@mui/material";
+import { Alert, Box, Button, Card, Link, Stack } from "@mui/material";
 import styles from "./contact.module.scss";
 import { IContact } from "@/types/contact";
-import HighlightElement from "@/components/client/highlight-element/highlight-element";
 import PhoneIcon from "@mui/icons-material/Phone";
 import EmailIcon from "@mui/icons-material/Email";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import "@/../scss/globals.scss";
+import { getContacts } from "@/lib/contacts";
+import { FETCH_CONTACTS_ERROR } from "@/errors/contacts";
 
-/**
- * Props for the Contact component.
- *
- * @property {() => Promise<IContact[]>} fetchFunction - Function to fetch data for the contacts.
- * @property {string} errorMessage - The error message to display if the fetch fails.
- */
-interface Props {
-  fetchFunction: () => Promise<IContact[]>;
-  errorMessage: string;
-}
-
-const Contact = async ({
-  fetchFunction,
-  errorMessage,
-}: Props): Promise<ReactElement> => {
+const Contact = async (): Promise<ReactElement> => {
   let data: IContact[] | null = null;
   let error: string | null = null;
 
   try {
-    data = await fetchFunction();
+    data = await getContacts();
   } catch (err: unknown) {
-    console.error("Failed to fetch certifications:", err);
-    error = errorMessage;
+    console.error("Failed to fetch contacts:", err);
+    error = FETCH_CONTACTS_ERROR;
   }
 
   /**
@@ -40,26 +28,22 @@ const Contact = async ({
   if (error) {
     return (
       <Box sx={{ marginY: "1rem" }} component="section">
-        <Alert severity="error">{errorMessage}</Alert>
+        <Alert severity="error">{FETCH_CONTACTS_ERROR}</Alert>
       </Box>
     );
   }
   const contactConfig = {
     phone: {
-      icon: <PhoneIcon fontSize="small" />,
-      color: "#f3ced1",
+      icon: <PhoneIcon fontSize="inherit" />,
     },
     email: {
-      icon: <EmailIcon fontSize="small" />,
-      color: "#e6d4fa",
+      icon: <EmailIcon fontSize="inherit" />,
     },
     github: {
-      icon: <GitHubIcon fontSize="small" />,
-      color: "#e6d4fa",
+      icon: <GitHubIcon fontSize="inherit" />,
     },
     linkedin: {
-      icon: <LinkedInIcon fontSize="small" />,
-      color: "#fbe894",
+      icon: <LinkedInIcon fontSize="inherit" />,
     },
   };
 
@@ -67,23 +51,18 @@ const Contact = async ({
     <Stack direction="row" component="section" sx={{ mb: 3 }}>
       {data?.map(({ type, label, href }: IContact, index) => {
         // Get the icon and color from the lookup object
-        const { icon, color } = contactConfig[type];
+        const { icon } = contactConfig[type];
         return (
           <Card className={styles.card} key={index}>
             <Stack
               direction="row"
-              spacing={1.5}
+              spacing="2rem"
               alignItems="center"
               flexWrap="wrap"
               width="100%"
               className={styles.cardContent}
             >
-              <HighlightElement
-                type="underline"
-                hover={true}
-                color={color}
-                className={`${styles.title} ${styles.short}`}
-              >
+              <Button size="small" className="btnAnimation">
                 <Link
                   href={href}
                   target="_blank"
@@ -98,7 +77,7 @@ const Contact = async ({
                   <Box className={styles.iconWrapper}>{icon}</Box>
                   <div className={styles.textContent}>{label}</div>
                 </Link>
-              </HighlightElement>
+              </Button>
             </Stack>
           </Card>
         );

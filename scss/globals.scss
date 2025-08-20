@@ -1,12 +1,15 @@
+@use "scss/theme.scss" as theme;
+
 body {
-  margin: 0 auto;
+  margin: 0;
+  width: 100vw;
   -webkit-font-smoothing: antialiased;
   font-feature-settings: "pnum";
   font-variant-numeric: proportional-nums;
   text-rendering: optimizeLegibility;
   box-sizing: border-box;
-  width: 80vw;
   min-width: 375px;
+  background-color: theme.$palette-background-default;
 }
 
 html {
@@ -21,37 +24,26 @@ a {
   box-sizing: border-box;
 }
 
-/* xs: 0–600px */
-@media (max-width: 600px) {
-  body {
-    padding: 1.875rem 1.875rem;
+.btnAnimation {
+  transition: all 0.2s ease !important;
+  &:hover {
+    transform: translateX(2px);
   }
 }
 
-/* sm: 601–900px */
-@media (min-width: 601px) and (max-width: 900px) {
-  body {
-    padding: 1.5rem 3rem;
-  }
-}
+.tile {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 32px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    0 4px 3px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s;
 
-/* md: 901–1200px */
-@media (min-width: 901px) and (max-width: 1200px) {
-  body {
-    padding: 1.75rem 4rem;
-  }
-}
-
-/* lg: 1201–1536px */
-@media (min-width: 1201px) and (max-width: 1536px) {
-  body {
-    padding: 2rem 5rem;
-  }
-}
-
-/* xl: 1537px+ */
-@media (min-width: 1537px) {
-  body {
-    padding: 2rem 5rem;
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 13px rgba(0, 0, 0, 0.2);
   }
 }

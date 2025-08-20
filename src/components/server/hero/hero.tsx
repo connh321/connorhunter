@@ -3,13 +3,18 @@
 import { ReactElement } from "react";
 import "./hero.module.scss";
 import dynamic from "next/dynamic";
+import { Stack } from "@mui/material";
 
 const Hero = (): ReactElement => {
   const About = dynamic(() => import("@/components/server/about/about"), {
     ssr: true,
   });
 
-  return <About />;
+  return (
+    <Stack direction="row" alignItems="center" flexWrap="wrap" width="100%">
+      <About />
+    </Stack>
+  );
 };
 
 export default Hero;

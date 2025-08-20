@@ -28,6 +28,13 @@ const App = (): ReactElement => {
     ssr: true,
   });
 
+  const Projects = dynamic(
+    () => import("@/components/server/projects/projects"),
+    {
+      ssr: true,
+    },
+  );
+
   const Education = dynamic(
     () => import("@/components/server/education/education"),
     {
@@ -65,10 +72,18 @@ const App = (): ReactElement => {
 
   return (
     <>
-      <Header />
-      <Stack component={"main"} className={styles.main} gap={6}>
+      <Header className={styles.space} />
+      <Stack
+        component={"main"}
+        className={`${styles.main} ${styles.space}`}
+        gap={"3rem"}
+      >
         <Hero />
         <>
+          <Suspense fallback={<CertificationsFallback />}>
+            <Projects></Projects>
+          </Suspense>
+
           <Education></Education>
           <Suspense fallback={<CertificationsFallback />}>
             <Certifications
@@ -81,6 +96,8 @@ const App = (): ReactElement => {
               title="Core Programming Languages"
               fetchFunction={getLanguages}
               errorMessage={FETCH_LANGUAGES_ERROR}
+              color="secondary"
+              variant="outlined"
             />
           </Suspense>
           <Suspense fallback={<ChipsSectionFallback />}>
@@ -88,6 +105,8 @@ const App = (): ReactElement => {
               title="Frameworks, Tools & Platforms"
               fetchFunction={getTools}
               errorMessage={FETCH_TOOLS_ERROR}
+              color="secondary"
+              variant="outlined"
             />
           </Suspense>
           <Suspense fallback={<ChipsSectionFallback />}>
@@ -95,6 +114,8 @@ const App = (): ReactElement => {
               title="AWS Cloud Services"
               fetchFunction={getAwsCloudServices}
               errorMessage={FETCH_AWS_CLOUD_SERVICES_ERROR}
+              color="secondary"
+              variant="outlined"
             />
           </Suspense>
           <Suspense fallback={<ChipsSectionFallback />}>
@@ -102,6 +123,8 @@ const App = (): ReactElement => {
               title="Core Development Principles"
               fetchFunction={getPrinciples}
               errorMessage={FETCH_PRINCIPLES_ERROR}
+              color="secondary"
+              variant="outlined"
             />
           </Suspense>
         </>

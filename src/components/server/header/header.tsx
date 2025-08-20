@@ -4,6 +4,9 @@ import { Box, Stack, Typography } from "@mui/material";
 import styles from "./header.module.scss";
 import dynamic from "next/dynamic";
 
+interface Props {
+  className?: string;
+}
 /**
  * Header component renders the top navigation bar.
  *
@@ -13,7 +16,7 @@ import dynamic from "next/dynamic";
  * @component
  * @returns {ReactElement} The header bar with logo and navigation buttons.
  */
-const Header = (): ReactElement => {
+const Header = ({ className }: Props): ReactElement => {
   const ResumeButton = dynamic(
     () => import("@/components/client/resume-button/resume-button"),
     {
@@ -32,7 +35,7 @@ const Header = (): ReactElement => {
       direction="row"
       justifyContent="space-between"
       alignItems="center"
-      className={styles.header}
+      className={`${styles.header} ${className}`}
     >
       <Box className={styles.nameContainer}>
         <Typography

@@ -3,7 +3,8 @@
 .header {
   height: 4.125rem;
   font-weight: 700;
-  color: theme.$palette-text-secondary;
+  color: theme.$palette-background-default;
+  background-color: theme.$palette-secondary-main;
 }
 
 .btn {
@@ -11,7 +12,7 @@
   color: inherit !important;
   font-size: 1rem !important;
   font-weight: inherit !important;
-  letter-spacing: 0.1rem;
+  letter-spacing: 0.0875rem;
 }
 
 .btns {
