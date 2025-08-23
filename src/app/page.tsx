@@ -1,6 +1,6 @@
 "use server";
 import { ReactElement, Suspense } from "react";
-import { Stack } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 import "../../scss/globals.scss";
 import styles from "./page.module.scss";
 import dynamic from "next/dynamic";
@@ -14,6 +14,8 @@ import { FETCH_CERTIFICATIONS_ERROR } from "@/errors/certifications";
 import { FETCH_TOOLS_ERROR } from "@/errors/tools";
 import { FETCH_AWS_CLOUD_SERVICES_ERROR } from "@/errors/aws-cloud-services";
 import { FETCH_PRINCIPLES_ERROR } from "@/errors/principles";
+import WorkExperience from "@/components/server/work-experience/work-experience";
+import WorkExperienceFallback from "@/components/server/work-experience/work-experience-fallback";
 
 const Hero = dynamic(() => import("@/components/server/hero/hero"), {
   ssr: true,
@@ -71,7 +73,7 @@ const App = (): ReactElement => {
   );
 
   return (
-    <>
+    <Box className={styles.container}>
       <Header className={styles.space} />
       <Stack
         component={"main"}
@@ -85,6 +87,9 @@ const App = (): ReactElement => {
           </Suspense>
 
           <Education></Education>
+          <Suspense fallback={<WorkExperienceFallback />}>
+            <WorkExperience></WorkExperience>
+          </Suspense>
           <Suspense fallback={<CertificationsFallback />}>
             <Certifications
               fetchFunction={getCertifications}
@@ -130,7 +135,7 @@ const App = (): ReactElement => {
         </>
       </Stack>
       <Footer />
-    </>
+    </Box>
   );
 };
 
