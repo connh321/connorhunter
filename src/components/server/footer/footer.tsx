@@ -9,8 +9,6 @@
  */
 import { Stack, Typography } from "@mui/material";
 import dynamic from "next/dynamic";
-import { getContacts } from "@/lib/contacts";
-import { FETCH_CONTACTS_ERROR } from "@/errors/contacts";
 import styles from "./footer.module.scss";
 
 /**
@@ -50,13 +48,7 @@ const Footer = () => {
           : `${startYear} - ${currentYear}`}{" "}
         Connor Hunter
       </Typography>
-      {/*<Suspense fallback={<CertificationsFallback />}>*/}
-      <Contact
-        fetchFunction={getContacts}
-        errorMessage={FETCH_CONTACTS_ERROR}
-      ></Contact>
-
-      {/*</Suspense>*/}
+      <Contact></Contact>
     </Stack>
   );
 };

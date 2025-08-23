@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ReactElement } from "react";
 import { Lato } from "next/font/google";
 import ThemeRegistry from "@/theme/theme";
+import BubbleBackground from "@/components/client/bubble-background/bubble-background";
 
 /**
  * Metadata for the application, used by Next.js for SEO and page info.
@@ -41,6 +42,7 @@ const RootLayout = ({ children }: Props): ReactElement => {
   return (
     <html lang="en">
       <body className={lato.className}>
+        <BubbleBackground />
         <ThemeRegistry>{children}</ThemeRegistry>
       </body>
     </html>
