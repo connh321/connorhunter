@@ -6,6 +6,18 @@
   box-shadow: 0 8px 13px rgba(0, 0, 0, 0.2) !important;
 }
 
+.img {
+  border-radius: 17px !important;
+}
+
+.textContent {
+  margin-right: 6rem;
+}
+
+.imgHasLink {
+  cursor: pointer;
+}
+
 @media (max-width: 1300px) {
   .img {
     width: 400px !important;
@@ -23,6 +35,10 @@
     height: 211px !important;
     margin: auto;
   }
+  .textContent {
+    margin-bottom: 6rem;
+    margin-right: unset;
+  }
 }
 
 @media (max-width: 600px) {
@@ -34,5 +50,9 @@
     width: 250px !important;
     height: 163px !important;
     margin: auto;
+  }
+  .textContent {
+    margin-bottom: 6rem;
+    margin-right: unset;
   }
 }
