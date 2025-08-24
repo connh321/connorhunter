@@ -6,7 +6,6 @@ import Image from "next/image";
 import "@/../scss/globals.scss";
 import styles from "./work-experience.module.scss";
 
-
 /**
  * WorkExperience component.
  * Displays a list of work experiences.
