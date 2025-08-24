@@ -16,10 +16,17 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import "@/../scss/globals.scss";
 
+/**
+ * Props interface for the Project component.
+ */
 interface Props {
   data: IProject;
 }
 
+/**
+ * Project component.
+ * Displays a project card with details and links.
+ */
 const Project = ({ data }: Props): ReactElement => {
   const cardBgStyles = data?.featured
     ? { bgcolor: data.featured.bgcolor }

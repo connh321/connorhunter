@@ -20,11 +20,17 @@ import styles from "./page.module.scss";
 import "@/../scss/globals.scss";
 import ProjectsFallback from "@/components/server/projects/projects-fallback";
 
-const Hero = dynamic(() => import("@/components/server/hero/hero"), {
-  ssr: true,
-});
-
+/**
+ * Main App component (Home page).
+ */
 const App = (): ReactElement => {
+  /**
+   * Dynamic imports of various components.
+   */
+  const Hero = dynamic(() => import("@/components/server/hero/hero"), {
+    ssr: true,
+  });
+
   const Header = dynamic(() => import("@/components/server/header/header"), {
     ssr: true,
   });

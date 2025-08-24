@@ -11,6 +11,13 @@ import "@/../scss/globals.scss";
 interface Props {
   children: React.ReactNode;
 }
+
+/**
+ * A layout component for the projects page.
+ *
+ * @param {Props} props - Component props.
+ * @returns {ReactElement} The rendered layout component.
+ */
 const ProjectsLayout = ({ children }: Props): ReactElement => {
   return (
     <Stack direction="column" className={styles.container}>

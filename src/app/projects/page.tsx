@@ -5,6 +5,9 @@ import "@/../scss/globals.scss";
 import ProjectsFallback from "@/components/server/projects/projects-fallback";
 import Projects from "@/components/server/projects/projects";
 
+/**
+ * Projects page component. Can Navigates to the homepage and displays projects.
+ */
 const ProjectsPage = (): ReactElement => {
   return (
     <Box className={`${styles.space}`}>
