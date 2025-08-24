@@ -1,8 +1,11 @@
 "use client";
 import { useEffect, useRef } from "react";
+import { useMediaQuery, useTheme } from "@mui/material";
 
 const BubbleBackground = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const theme = useTheme();
+  const isDesktop = useMediaQuery(theme.breakpoints.up("sm"));
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -11,11 +14,13 @@ const BubbleBackground = () => {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const canvasHeight = 400; // Height for the top part of the page
+    const canvasHeight = isDesktop ? 400 : 550;
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = canvasHeight);
 
-    const bubbles = Array.from({ length: 20 }, () => ({
+    const bubbleCount = isDesktop ? 20 : 7;
+
+    const bubbles = Array.from({ length: bubbleCount }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,
       radius: Math.random() * 60 + 30,
@@ -41,13 +46,21 @@ const BubbleBackground = () => {
       requestAnimationFrame(animate);
     };
 
+    const handleResize = () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = isDesktop ? 400 : 550; // Update height on resize based on isDesktop
+    };
+
+    handleResize();
+
     animate();
 
-    window.addEventListener("resize", () => {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = canvasHeight;
-    });
-  }, []);
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [isDesktop]);
 
   return (
     <canvas
@@ -57,7 +70,7 @@ const BubbleBackground = () => {
         top: 0,
         left: 0,
         width: "100%",
-        height: "400px",
+        height: isDesktop ? "400px" : "550px",
         zIndex: -1,
       }}
     />

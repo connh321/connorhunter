@@ -1,6 +1,6 @@
 "use server";
 import { ReactElement } from "react";
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Button, Link, Stack } from "@mui/material";
 import styles from "./header.module.scss";
 import dynamic from "next/dynamic";
 
@@ -38,18 +38,14 @@ const Header = ({ className }: Props): ReactElement => {
       className={`${styles.header} ${className}`}
     >
       <Box className={styles.nameContainer}>
-        <Typography
-          variant="h2"
-          className={`${styles.btn} ${styles.title} ${styles.long}`}
-        >
-          CONNOR HUNTER
-        </Typography>
-        <Typography
-          variant="h2"
-          className={`${styles.btn} ${styles.title} ${styles.short}`}
-        >
-          CH
-        </Typography>
+        <Link href="/">
+          <Button className={`${styles.btn} ${styles.title} ${styles.long}`}>
+            CONNOR HUNTER
+          </Button>
+          <Button className={`${styles.btn} ${styles.title} ${styles.short}`}>
+            CH
+          </Button>
+        </Link>
       </Box>
       <Stack direction="row" gap={2}>
         <ResumeButton></ResumeButton>

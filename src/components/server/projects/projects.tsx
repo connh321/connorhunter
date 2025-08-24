@@ -5,7 +5,11 @@ import { IProject } from "@/types/project";
 import { getProjects } from "@/lib/projects";
 import { FETCH_PROJECTS_ERROR } from "@/errors/projects";
 
-const Projects = async () => {
+interface Props {
+  showNonFeatured: boolean;
+}
+
+const Projects = async ({ showNonFeatured }: Props) => {
   let data: IProject[] = [];
   let error: string | null = null;
 
@@ -27,6 +31,9 @@ const Projects = async () => {
     );
   }
 
+  // Filter the projects based on the showNonFeatured prop.
+  data = showNonFeatured ? data : data.filter((project) => project.featured);
+
   return (
     <Box className={styles.projects}>
       <Typography variant="h5" sx={{ mb: 1 }} fontWeight={600}>
@@ -39,6 +46,7 @@ const Projects = async () => {
         width="100%"
         gap={"3rem"}
       >
+        {showNonFeatured}
         {data.map((data) => (
           <Project key={data.title} data={data} />
         ))}

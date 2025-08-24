@@ -18,7 +18,7 @@ describe("Projects component", () => {
       { title: "Another Project" },
     ]);
 
-    render(await Projects());
+    render(await Projects({ showNonFeatured: true }));
 
     expect(await screen.findByText("Projects:")).toBeInTheDocument();
     expect(await screen.findAllByTestId("project")).toHaveLength(2);
@@ -27,7 +27,7 @@ describe("Projects component", () => {
   it("renders nothing but heading when fetch returns empty list", async () => {
     (getProjects as jest.Mock).mockResolvedValue([]);
 
-    render(await Projects());
+    render(await Projects({ showNonFeatured: true }));
 
     expect(await screen.findByText("Projects:")).toBeInTheDocument();
     expect(screen.queryByTestId("project")).toBeNull();
@@ -36,7 +36,7 @@ describe("Projects component", () => {
   it("renders error alert when fetch fails", async () => {
     (getProjects as jest.Mock).mockRejectedValue(new Error("fail"));
 
-    render(await Projects());
+    render(await Projects({ showNonFeatured: true }));
 
     expect(await screen.findByText(FETCH_PROJECTS_ERROR)).toBeInTheDocument();
   });

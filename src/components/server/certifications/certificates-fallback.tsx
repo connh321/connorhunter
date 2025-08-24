@@ -1,5 +1,6 @@
 import { Box, Skeleton, Stack } from "@mui/material";
 import React, { ReactElement } from "react";
+import "@/../scss/globals.scss";
 
 /**
  * A fallback component that displays a skeleton loading state
@@ -18,12 +19,14 @@ const ChipsSectionFallback = (): ReactElement => {
           sx={{ mb: "8px" }}
         />
         <Stack direction="row" gap={2}>
-          <Skeleton
-            variant="rectangular"
-            width="150px"
-            height={"150px"}
-            sx={{ borderRadius: "32px" }}
-          />
+          <Box className="tile" width="150px" height="150px">
+            <Skeleton
+              variant="rectangular"
+              width="125px"
+              height={"125px"}
+              sx={{ borderRadius: "32px" }}
+            />
+          </Box>
         </Stack>
       </Box>
     </Box>
