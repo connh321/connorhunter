@@ -2,6 +2,10 @@
 import { useEffect, useRef } from "react";
 import { useMediaQuery, useTheme } from "@mui/material";
 
+/**
+ * BubbleBackground component.
+ * Creates a canvas with animated bubbles.
+ */
 const BubbleBackground = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const theme = useTheme();
@@ -14,12 +18,18 @@ const BubbleBackground = () => {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
+    /**
+     * Set the canvas height based on screen size.
+     */
     const canvasHeight = isDesktop ? 400 : 550;
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = canvasHeight);
 
     const bubbleCount = isDesktop ? 20 : 7;
 
+    /**
+     * Create an array of bubble objects to animate.
+     */
     const bubbles = Array.from({ length: bubbleCount }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,

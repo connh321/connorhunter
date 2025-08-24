@@ -4,7 +4,14 @@ import styles from "./education.module.scss";
 import Image from "next/image";
 import "@/../scss/globals.scss";
 
+/**
+ * Education component.
+ * Displays education information.
+ */
 const Education = (): ReactElement => {
+  /**
+   * Get the URL for the RIT CS department from environment variable.
+   */
   const csRitUrl = process.env.NEXT_PUBLIC_S3_RIT_CS_URL!;
   return (
     <Box sx={{ mb: 3 }} component="section">

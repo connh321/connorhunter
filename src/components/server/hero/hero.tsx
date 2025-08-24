@@ -5,6 +5,10 @@ import "./hero.module.scss";
 import dynamic from "next/dynamic";
 import { Stack } from "@mui/material";
 
+/**
+ * Hero component.
+ * Displays the hero section of the page.
+ */
 const Hero = (): ReactElement => {
   const About = dynamic(() => import("@/components/server/about/about"), {
     ssr: true,

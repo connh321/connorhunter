@@ -11,6 +11,10 @@ import "@/../scss/globals.scss";
 import { getContacts } from "@/lib/contacts";
 import { FETCH_CONTACTS_ERROR } from "@/errors/contacts";
 
+/**
+ * Contact component.
+ * Displays contact information.
+ */
 const Contact = async (): Promise<ReactElement> => {
   let data: IContact[] | null = null;
   let error: string | null = null;

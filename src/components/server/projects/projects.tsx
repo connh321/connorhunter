@@ -5,10 +5,17 @@ import { IProject } from "@/types/project";
 import { getProjects } from "@/lib/projects";
 import { FETCH_PROJECTS_ERROR } from "@/errors/projects";
 
+/**
+ * Props interface for the Projects component.
+ */
 interface Props {
   showNonFeatured: boolean;
 }
 
+/**
+ * Projects component.
+ * Displays a list of projects.
+ */
 const Projects = async ({ showNonFeatured }: Props) => {
   let data: IProject[] = [];
   let error: string | null = null;
