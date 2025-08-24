@@ -1,0 +1,20 @@
+[
+  {
+    "company": "UPS",
+    "location": "Remote",
+    "title": "Software Engineer I",
+    "startDate": "December 2023",
+    "endDate": "Present",
+    "companyImageUrl": "https://connorhunter.s3.us-east-2.amazonaws.com/ups.webp",
+    "companyImageAlt": "UPS Logo"
+  },
+  {
+    "company": "UPS",
+    "location": "Remote",
+    "title": "Software Engineer Intern",
+    "startDate": "May 2022",
+    "endDate": "December 2023",
+    "companyImageUrl": "https://connorhunter.s3.us-east-2.amazonaws.com/ups.webp",
+    "companyImageAlt": "UPS Logo"
+  }
+]

@@ -1,3 +1,5 @@
+@use "scss/theme.scss" as theme;
+
 .container {
   position: absolute;
   z-index: 1;
@@ -8,37 +10,10 @@
   margin: 0 auto;
 }
 
-/* xs: 0–600px */
-@media (max-width: 600px) {
-  .space {
-    padding: 1.875rem 1.875rem;
-  }
-}
-
-/* sm: 601–900px */
-@media (min-width: 601px) and (max-width: 900px) {
-  .space {
-    padding: 1.5rem 3rem;
-  }
-}
-
-/* md: 901–1200px */
-@media (min-width: 901px) and (max-width: 1200px) {
-  .space {
-    padding: 1.75rem 4rem;
-  }
-}
-
-/* lg: 1201–1536px */
-@media (min-width: 1201px) and (max-width: 1536px) {
-  .space {
-    padding: 2rem 5rem;
-  }
-}
-
-/* xl: 1537px+ */
-@media (min-width: 1537px) {
-  .space {
-    padding: 2rem 5rem;
-  }
+.btn {
+  background-color: rgba(226, 232, 240, 0.3) !important;
+  margin-left: auto !important;
+  box-shadow:
+    0 4px 3px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
 }

@@ -1,5 +1,12 @@
 import { ReactElement, Suspense } from "react";
-import { Button, Card, CardActions, Stack, Typography } from "@mui/material";
+import {
+  Button,
+  Card,
+  CardActions,
+  Link,
+  Stack,
+  Typography,
+} from "@mui/material";
 import Image from "next/image";
 import { IProject } from "@/types/project";
 import styles from "./project.module.scss";
@@ -14,12 +21,14 @@ interface Props {
 }
 
 const Project = ({ data }: Props): ReactElement => {
+  const cardBgStyles = data?.featured
+    ? { bgcolor: data.featured.bgcolor }
+    : { bgcolor: "rgba(226, 232, 240, 0.3)" };
+
   return (
     <Card
       sx={{
-        ...(data.featured?.bgcolor && {
-          bgcolor: `${data.featured.bgcolor} !important`,
-        }),
+        ...cardBgStyles,
       }}
       className={styles.project}
     >
@@ -29,17 +38,28 @@ const Project = ({ data }: Props): ReactElement => {
         alignItems="center"
         className={styles.content}
       >
-        <Stack direction="column" flexWrap="wrap" spacing="1rem">
-          <Typography variant="h5" color="textSecondary">
+        <Stack
+          direction="column"
+          flexWrap="wrap"
+          spacing="1rem"
+          className={styles.textContent}
+        >
+          <Typography
+            variant="h5"
+            color={data?.featured ? "primary" : "secondary"}
+          >
             {data.title}{" "}
           </Typography>
-          <Typography variant="body1" color="textSecondary">
+          <Typography
+            variant="body1"
+            color={data?.featured ? "primary" : "secondary"}
+          >
             {data.description}
           </Typography>
           <Suspense fallback={<ChipsSectionFallback />}>
             <ChipsSection
               chips={data.chips}
-              color="primary"
+              color={data?.featured ? "primary" : "secondary"}
               variant="outlined"
             />
           </Suspense>
@@ -50,7 +70,7 @@ const Project = ({ data }: Props): ReactElement => {
                 size="small"
                 href={data?.websiteLink}
                 target="_blank"
-                color={"secondary"}
+                color={data?.featured ? "primary" : "secondary"}
                 rel="noopener noreferrer"
                 startIcon={<OpenInNewIcon color={"secondary"} />}
               >
@@ -63,6 +83,7 @@ const Project = ({ data }: Props): ReactElement => {
               href={data.githubLink}
               target="_blank"
               variant="outlined"
+              color={data?.featured ? "primary" : "secondary"}
               rel="noopener noreferrer"
               startIcon={<GitHubIcon />}
             >
@@ -71,15 +92,17 @@ const Project = ({ data }: Props): ReactElement => {
           </CardActions>
         </Stack>
 
-        {data?.featured && data.featured.type !== "no-mockup" && (
-          <Image
-            src="/laptop-mockup.png"
-            alt={data.featured.mockupAlt!}
-            width={450}
-            height={293}
-            className={styles.img}
-            priority={true}
-          />
+        {data?.featured && (
+          <Link href={data?.websiteLink}>
+            <Image
+              src={data.featured.src}
+              alt={data.featured.alt}
+              width={425}
+              height={239}
+              className={`${styles.img} ${data?.websiteLink ? `${styles.imgHasLink} btnAnimation` : ""}`}
+              priority={true}
+            />
+          </Link>
         )}
       </Stack>
     </Card>

@@ -10,6 +10,7 @@ body {
   box-sizing: border-box;
   min-width: 375px;
   background-color: theme.$palette-background-default;
+  min-height: 100vh;
 }
 
 html {
@@ -31,6 +32,13 @@ a {
   }
 }
 
+.btnAnimationL {
+  transition: all 0.2s ease !important;
+  &:hover {
+    transform: translateX(-2px);
+  }
+}
+
 .tile {
   background-color: rgba(226, 232, 240, 0.3);
   border-radius: 32px !important;
@@ -45,5 +53,40 @@ a {
   &:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 13px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* xs: 0–600px */
+@media (max-width: 600px) {
+  .space {
+    padding: 1.875rem 1.875rem;
+  }
+}
+
+/* sm: 601–900px */
+@media (min-width: 601px) and (max-width: 900px) {
+  .space {
+    padding: 1.5rem 3rem;
+  }
+}
+
+/* md: 901–1200px */
+@media (min-width: 901px) and (max-width: 1200px) {
+  .space {
+    padding: 1.75rem 4rem;
+  }
+}
+
+/* lg: 1201–1536px */
+@media (min-width: 1201px) and (max-width: 1536px) {
+  .space {
+    padding: 2rem 5rem;
+  }
+}
+
+/* xl: 1537px+ */
+@media (min-width: 1537px) {
+  .space {
+    padding: 2rem 5rem;
   }
 }
