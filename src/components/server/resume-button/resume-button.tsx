@@ -1,7 +1,7 @@
-"use client";
+"use server";
 import { ReactElement } from "react";
 import { Box, Button, Link } from "@mui/material";
-import "@/../scss/globals.scss";
+import "../../../../scss/globals.scss";
 
 /**
  * ResumeButton component.
@@ -10,14 +10,8 @@ import "@/../scss/globals.scss";
 const ResumeButton = (): ReactElement => {
   const url = process.env.NEXT_PUBLIC_S3_RESUME_URL!;
 
-  const handleScrollToBottom = () => {
-    document
-      .getElementById("resume-section")
-      ?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
-    <Box onClick={handleScrollToBottom} sx={{ cursor: "pointer" }}>
+    <Box sx={{ cursor: "pointer" }}>
       <Link href={url} target="_blank" rel="noopener noreferrer">
         <Button className="btnAnimation">Resume</Button>
       </Link>
