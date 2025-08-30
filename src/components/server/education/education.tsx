@@ -52,7 +52,7 @@ const Education = (): ReactElement => {
             Rochester, NY
           </Typography>
           <Typography variant="body2" color="textPrimary">
-            2019 - 2023
+            2019 → 2023
           </Typography>
         </Box>
       </Link>

@@ -18,7 +18,7 @@ interface Props {
  */
 const Header = ({ className }: Props): ReactElement => {
   const ResumeButton = dynamic(
-    () => import("@/components/client/resume-button/resume-button"),
+    () => import("@/components/server/resume-button/resume-button"),
     {
       ssr: true,
     },
